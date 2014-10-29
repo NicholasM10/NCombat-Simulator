@@ -13,6 +13,8 @@ and I hope it will grow, everyone can make pull requests to improve code, becaus
 * Text colors.
  * More warrior classes.
 * Bowmen, Cavalary, Swordsmen, Crossbowmen, Macemen and many more.
+* Armor.
+* Loot from battles.
 * More to come.
 
 
