@@ -2,16 +2,21 @@
 #include <string>
 #include <random>
 #include <ctime>
+#include "TroopNames.h"
+
 
 using namespace std;
 
+     TroopNames troopNames;
+
 int main()
 {
+	
+
 	default_random_engine randomEngine(time(0));
 	uniform_real_distribution<float> attack(0.0f, 1.0f);
 
-	string generalName;
-
+	
 	// Human properties
 	float humanAttack = 0.6f; //Chance
 	float humanHealth = 250.0f;
@@ -34,10 +39,9 @@ int main()
 
 	char turn = 'H'; // H - Human
 
-	cout << skeletonAttack << endl;
-	cout << "What your name would be?" << endl;
-	cin >> generalName;
-	cout << "Oh, welcome general " << generalName << endl;
+	cout << troopNames.hManAtArms << ":  " << "What your name would be?" << endl;
+	cin >> troopNames.generalName;
+	cout << "Oh, welcome general " << troopNames.generalName << endl;
 	cout << "How many men do we have?" << endl;
 	cin >> armyMen;
 	cout << "I see..." << endl;
