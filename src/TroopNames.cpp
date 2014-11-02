@@ -1,25 +1,28 @@
 #include "TroopNames.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
+
+
 
 TroopNames::TroopNames()
 {
 	// Positions/Classes (Might change or be moved!)
-	std::string hGeneral = ""; // General
-	std::string generalName = ""; // General (user)
-	std::string hKnight = ""; // Horseman
-	std::string hManAtArms = "Man at Arms"; // Horseman
-	std::string hSquire = ""; // Footman
-	std::string hSpearman = ""; // Footman
-	std::string hRecruit = ""; // Footman/Spear
-	std::string hSwordsman = ""; // Footman
-	std::string hChampionSwordsman = ""; //Footman 
-	std::string hVeteranSwordsman = ""; // Footman
-	std::string hCrossbowman = ""; // Ranged
-	std::string hBowyer = ""; // Ranged
-	std::string hSharpshooter = ""; // Ranged/Crossbow
-	std::string hHunter = ""; // Ranged
+	hGeneral = ""; // General
+	generalName = ""; // General (user)
+	hKnight = ""; // Horseman
+	hManAtArms = "Man at Arms"; // Horseman
+	hSquire = ""; // Footman
+	hSpearman = ""; // Footman
+	hRecruit = ""; // Footman/Spear
+	hSwordsman = ""; // Footman
+	hChampionSwordsman = ""; //Footman 
+	hVeteranSwordsman = ""; // Footman
+	hCrossbowman = ""; // Ranged
+	hBowyer = ""; // Ranged
+	hSharpshooter = ""; // Ranged/Crossbow
+	hHunter = ""; // Ranged
 }
 
 

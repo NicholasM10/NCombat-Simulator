@@ -39,7 +39,7 @@ int main()
 
 	char turn = 'H'; // H - Human
 
-	cout << troopNames.hManAtArms << ":  " << "What your name would be?" << endl;
+	cout << troopNames.hManAtArms << ": " << "What your name would be?" << endl;
 	cin >> troopNames.generalName;
 	cout << "Oh, welcome general " << troopNames.generalName << endl;
 	cout << "How many men do we have?" << endl;
