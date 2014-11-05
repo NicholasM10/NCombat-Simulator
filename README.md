@@ -28,3 +28,9 @@ Most likely, all this repo is planning for next game.
 0.2.4:
 * Code was formatted into better style for others (or myself) to understand better.
 * Solved bug when battle results won't print out.
+
+0.2.6:
+* Added colours!
+* New classes and libraries, TroopNames for example.
+* Added "Design" .txt where I will edit changed about what game is trying to be, but it might critically change any time.
+* Fixed bug where ":" won't appear during dialouges.
