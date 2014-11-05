@@ -4,12 +4,10 @@
 
 using namespace std;
 
-
-
 TroopNames::TroopNames()
 {
 	// Positions/Classes (Might change or be moved!)
-	hGeneral = ""; // General
+	hGeneral = "General:"; // General
 	generalName = ""; // General (user)
 	hKnight = ""; // Horseman
 	hManAtArms = "Man at Arms"; // Horseman
@@ -24,7 +22,6 @@ TroopNames::TroopNames()
 	hSharpshooter = ""; // Ranged/Crossbow
 	hHunter = ""; // Ranged
 }
-
 
 TroopNames::~TroopNames()
 {
