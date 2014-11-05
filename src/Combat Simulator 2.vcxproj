@@ -68,6 +68,7 @@
     <ClCompile Include="TroopNames.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleColor.h" />
     <ClInclude Include="TroopNames.h" />
   </ItemGroup>
   <ItemGroup>
