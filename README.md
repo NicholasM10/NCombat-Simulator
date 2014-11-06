@@ -34,3 +34,6 @@ Most likely, all this repo is planning for next game.
 * New classes and libraries, TroopNames for example.
 * Added "Design" .txt where I will edit changed about what game is trying to be, but it might critically change any time.
 * Fixed bug where ":" won't appear during dialouges.
+
+0.2.61:
+*Minor text adjustments.
