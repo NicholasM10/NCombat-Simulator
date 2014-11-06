@@ -10,7 +10,6 @@ class TroopNames
 
 			// Positions/Classes (Might change or be moved!)
 			std::string hGeneral; // General
-			std::string generalName; // General (user)
 			std::string hKnight; // Horseman
 			std::string hManAtArms; // Horseman
 			std::string hSquire; // Footman

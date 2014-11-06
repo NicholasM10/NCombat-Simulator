@@ -15,7 +15,6 @@ using namespace std;
 		 default_random_engine randomEngine(time(0));
 		 uniform_real_distribution<float> attack(0.0f, 1.0f);
 
-
 		 // Human properties
 		 float humanAttack = 0.6f; // Chance
 		 float humanHealth = 250.0f;
@@ -36,13 +35,20 @@ using namespace std;
 		 int armyMen;
 		 int armySkeleton;
 
+		 // General (user)
+		 string generalName; 
+
 		 char turn = 'H'; // H - Human
 
 		 cout << troopNames.hManAtArms << ": " << "What your name would be?" << endl;
-		 cin >> troopNames.generalName;
-		 cout << troopNames.hManAtArms << ": "  "Oh, welcome general " << troopNames.generalName << endl;
+		 cout << white << "You: ";
+		 cin >> generalName;
+
+		 cout << troopNames.hManAtArms << ": "  "Oh, welcome general " << generalName << "." << endl;
 		 cout << troopNames.hManAtArms << ": " << "How many men do we have?" << endl;
+		 cout << white << "You: ";
 		 cin >> armyMen;
+
 		 cout << troopNames.hManAtArms << ": " "I see..." << endl;
 		 cout << "((How many skeletons are attacking? (skeletons are weaker than humans)))" << endl;
 		 cin >> armySkeleton;
@@ -120,7 +126,7 @@ using namespace std;
 				 cout << "Humans killed: " << humansKilled << endl << "Skeletons killed: " << skeletonsKilled << endl;
 			 }
 		 }
-		 }
+	}
 
 		 system("PAUSE");
 

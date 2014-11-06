@@ -8,7 +8,6 @@ TroopNames::TroopNames()
 {
 	// Positions/Classes (Might change or be moved!)
 	hGeneral = "General:"; // General
-	generalName = ""; // General (user)
 	hKnight = ""; // Horseman
 	hManAtArms = "Man at Arms"; // Horseman
 	hSquire = ""; // Footman
