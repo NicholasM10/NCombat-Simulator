@@ -1,6 +1,6 @@
 NCombat-Simulator
 =================
-Version: 0.2.4
+Version: 0.2.61
 
 + Nicholas' Combat Simulator +
 
