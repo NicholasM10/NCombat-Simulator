@@ -71,6 +71,7 @@ using namespace std;
 		 {
 			 cout << troopNames.hManAtArms << ": " "Army of skeletons is attacking!" << endl;
 			 cout << troopNames.hManAtArms << ": " "We shall attack!" << endl;
+		 }
 
 		 while ((armyMen > 0) && (armySkeleton > 0)) // Battle process
 		 {
@@ -126,9 +127,6 @@ using namespace std;
 				 cout << "Humans killed: " << humansKilled << endl << "Skeletons killed: " << skeletonsKilled << endl;
 			 }
 		 }
-	}
-
 		 system("PAUSE");
-
 	 }
 	 
