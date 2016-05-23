@@ -2,6 +2,9 @@
 #include <string>
 #include <random>
 #include <ctime>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include "ConsoleColor.h"
 #include "TroopNames.h"
 
@@ -40,93 +43,142 @@ using namespace std;
 
 		 char turn = 'H'; // H - Human
 
-		 cout << troopNames.hManAtArms << ": " << "What your name would be?" << endl;
-		 cout << white << "You: ";
-		 cin >> generalName;
+		 char gameMenuChoice; // Main menu choice N - New game C - Continue.
 
-		 cout << troopNames.hManAtArms << ": "  "Oh, welcome general " << generalName << "." << endl;
-		 cout << troopNames.hManAtArms << ": " << "How many men do we have?" << endl;
-		 cout << white << "You: ";
-		 cin >> armyMen;
+		 boolean playingGame = false; // false is main menu state.
 
-		 cout << troopNames.hManAtArms << ": " "I see..." << endl;
-		 cout << "((How many skeletons are attacking? (skeletons are weaker than humans)))" << endl;
-		 cin >> armySkeleton;
+		 boolean completedIntro; // if true that means player already completed first part of game where they enter name of general etc.
 
-		 if (armySkeleton <= 0)
+		 //ifstream saveIn("save.txt");
+		 ofstream saveOut;
+		 //saveIn.open("save.txt");
+		 saveOut.open("save.txt", std::ofstream::out | std::ofstream::app);
+
+		 start_game:
+
+		 cout << "Welcome to NCombat Simuator, would you like to start a new game?" << endl << "Or continue already existing save?" << endl;
+		 cin >> gameMenuChoice;
+
+		 if (gameMenuChoice == 'N' || gameMenuChoice == 'n')
 		 {
-			 cout << troopNames.hManAtArms << ": " "Nice weather..." << endl;
+			 cout << "Starting new game..." << endl;
+			 cout << string(100, '\n');
+			 remove("save.txt");
+			 saveOut.close();
+			 saveOut.open("save.txt", std::ofstream::out | std::ofstream::trunc);
+			 playingGame = true;
 		 }
-		 else if (armySkeleton > 0 && armySkeleton <= 25)
+		 else if (gameMenuChoice == 'C' || gameMenuChoice == 'c')
 		 {
-			 cout << troopNames.hManAtArms << ": " "Small group of skeletons is attacking!" << endl;
-			 cout << troopNames.hManAtArms << ": " "We shall attack!" << endl;
-		 }
-		 else if (armySkeleton > 25 && armySkeleton < 100)
+			 //playingGame = true;
+			 cout << "Not yet supported..." << endl; // LEFT OFF HERE, MAKE CONTINUE FEATURE.
+		 } 
+		 else 
 		 {
-			 cout << troopNames.hManAtArms << ": " "Big group of skeletons is attacking!" << endl;
-			 cout << troopNames.hManAtArms << ": " "We shall attack!" << endl;
-		 }
-		 else if (armySkeleton >= 100)
-		 {
-			 cout << troopNames.hManAtArms << ": " "Army of skeletons is attacking!" << endl;
-			 cout << troopNames.hManAtArms << ": " "We shall attack!" << endl;
+			 cout << "Error... make sure you entered right letter - N to start a new game, C to continue." << endl;
+			 goto start_game;
 		 }
 
-		 while ((armyMen > 0) && (armySkeleton > 0)) // Battle process
+		 if (playingGame == true)
 		 {
-			 if (turn == 'H')
+			 //NEW GAME
+			
+			 cout << troopNames.hManAtArms << ": " << "What your name would be?" << endl;
+			 cout << white << "You: ";
+			 cin >> generalName;
+
+			 completedIntro = true;
+			 if (completedIntro == true)
 			 {
-				 if (armyMen--)
-				 {
-					 cout << red << "Human recruit has been killed" << endl << white << endl;
-				 }
+				 cout << white << "Completed setup." << endl;
+				 saveOut << "intro: 1" << endl;
+				 saveOut.flush();
+			 }
 
-				 // Get attack result
-				 attackResult = attack(randomEngine);
+			 cout << troopNames.hManAtArms << ": "  "Oh, welcome general " << generalName << "." << endl;
+			 cout << troopNames.hManAtArms << ": " << "How many men do we have?" << endl;
+			 cout << white << "You: ";
+			 cin >> armyMen;
 
-				 // Check if attack was succsessful
-				 if (attackResult <= humanAttack)
+			 cout << troopNames.hManAtArms << ": " "I see..." << endl;
+			 cout << "((How many skeletons are attacking? (skeletons are weaker than humans)))" << endl;
+			 cin >> armySkeleton;
+
+			 if (armySkeleton <= 0)
+			 {
+				 cout << troopNames.hManAtArms << ": " "Nice weather..." << endl;
+			 }
+			 else if (armySkeleton > 0 && armySkeleton <= 25)
+			 {
+				 cout << troopNames.hManAtArms << ": " "Small group of skeletons is attacking!" << endl;
+				 cout << troopNames.hManAtArms << ": " "We shall attack!" << endl;
+			 }
+			 else if (armySkeleton > 25 && armySkeleton < 100)
+			 {
+				 cout << troopNames.hManAtArms << ": " "Big group of skeletons is attacking!" << endl;
+				 cout << troopNames.hManAtArms << ": " "We shall attack!" << endl;
+			 }
+			 else if (armySkeleton >= 100)
+			 {
+				 cout << troopNames.hManAtArms << ": " "Army of skeletons is attacking!" << endl;
+				 cout << troopNames.hManAtArms << ": " "We shall attack!" << endl;
+			 }
+
+			 while ((armyMen > 0) && (armySkeleton > 0)) // Battle process
+			 {
+				 if (turn == 'H')
 				 {
-					 currentSkeletonHealth -= humanDamage;
-					 if (currentSkeletonHealth < 0)
+					 if (armyMen--)
 					 {
-						 armySkeleton--;
-						 skeletonsKilled++;
+						 cout << red << "Human recruit has been killed" << endl << white << endl;
 					 }
-					 turn = 'S';
+
+					 // Get attack result
+					 attackResult = attack(randomEngine);
+
+					 // Check if attack was succsessful
+					 if (attackResult <= humanAttack)
+					 {
+						 currentSkeletonHealth -= humanDamage;
+						 if (currentSkeletonHealth < 0)
+						 {
+							 armySkeleton--;
+							 skeletonsKilled++;
+						 }
+						 turn = 'S';
+					 }
 				 }
-			 }
-			 else
-			 {
-				 if (armySkeleton--)
+				 else
 				 {
-					 cout << green << "Skeleton recruit has been killed" << white << endl << endl;
+					 if (armySkeleton--)
+					 {
+						 cout << green << "Skeleton recruit has been killed" << white << endl << endl;
+					 }
+
+					 currentHumanHealth -= skeletonDamage;
+
+					 if (currentHumanHealth < 0)
+					 {
+						 armyMen--;
+						 humansKilled++;
+					 }
+					 turn = 'H';
 				 }
 
-				 currentHumanHealth -= skeletonDamage;
+				 //cout << "Humans: " << armyMen << endl << "Skeletons: " << armySkeleton << endl;
 
-				 if (currentHumanHealth < 0)
+				 if (armyMen <= 0)
 				 {
-					 armyMen--;
-					 humansKilled++;
+					 cout << "Victory!" << endl;
+					 cout << "Humans killed: " << humansKilled << endl << "Skeletons killed: " << skeletonsKilled << endl;
 				 }
-				 turn = 'H';
+				 else if (armySkeleton <= 0)
+				 {
+					 cout << "Defeat" << endl;
+					 cout << "Humans killed: " << humansKilled << endl << "Skeletons killed: " << skeletonsKilled << endl;
+				 }
 			 }
-
-			 //cout << "Humans: " << armyMen << endl << "Skeletons: " << armySkeleton << endl;
-
-			 if (armyMen <= 0)
-			 {
-				 cout << "Victory!" << endl;
-				 cout << "Humans killed: " << humansKilled << endl << "Skeletons killed: " << skeletonsKilled << endl;
-			 }
-			 else if (armySkeleton <= 0)
-			 {
-				 cout << "Defeat" << endl;
-				 cout << "Humans killed: " << humansKilled << endl << "Skeletons killed: " << skeletonsKilled << endl;
-			 }
+			 system("PAUSE");
 		 }
-		 system("PAUSE");
 	 }
 	 
